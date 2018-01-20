@@ -5,8 +5,8 @@
 
 	Accepts an object, returns an array of strings
 	that represent every element in the object and
-	its 'child' objects (objects that are values of
-	this objects).
+	its 'child' objects (objects that are elements of
+	this object).
 	Optional second parameter is object name to be
 	used instead of 'this'.
 
