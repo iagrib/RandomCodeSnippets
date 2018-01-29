@@ -21,6 +21,8 @@
 	if given table is an instance of this
 	class.
 
+	Example usage: https://repl.it/@Ia_grib/ClassesLuaExample
+
 ]]
 
 function Class(methods, static, constructor)
