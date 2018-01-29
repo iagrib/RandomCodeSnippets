@@ -35,7 +35,7 @@ function Class(methods, static, constructor)
 	return setmetatable(static, {
 		__call = function(...)
 			local new = setmetatable({}, cmt)
-			constructor(new, ...)
+			constructor(new, select(2, ...))
 			return new
 		end,
 		__index = {
