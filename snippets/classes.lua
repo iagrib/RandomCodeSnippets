@@ -40,7 +40,7 @@ function Class(methods, static, constructor)
 		end,
 		__index = {
 			instance = function(tab)
-				return type(tab) == "table" and getmetatable(tab) == cmt
+				return getmetatable(tab) == cmt
 			end
 		}
 	})
