@@ -27,7 +27,7 @@ function format(str, tab, default)
 	local function replace(k)
 		if tab[k] == nil then
 			if default == nil then return "{"..k.."}" end
-			return default
+			return tostring(default)
 		end
 		return tostring(tab[k])
 	end
