@@ -17,7 +17,7 @@
 
 function objectsEqual(obj1, obj2) {
 	const t1 = typeof obj1, t2 = typeof obj2;
-	if((obj1 === obj2) || (Number.isNaN(obj1) && Number.isNaN(obj2)) || (((t1 === "string" || obj1 instanceof String) && (t2 === "string" || obj2 instanceof String)) && (String(obj1) === String(obj2)))) return true;
+	if(Object.is(obj1, obj2) || (obj1 === obj2) || ((t1 === "string" || obj1 instanceof String) && (t2 === "string" || obj2 instanceof String) && (String(obj1) === String(obj2))) || ((t1 === "number" || obj1 instanceof Number) && (t2 === "number" || obj2 instanceof Number) && (Number(obj1) === Number(obj2))) || ((t1 === "boolean" || obj1 instanceof Boolean) && (t2 === "boolean" || obj2 instanceof Boolean) && (Boolean(obj1) === Boolean(obj2)))) return true;
 	if((t1 !== t2) || (t1 !== "object" && t1 === t2 && obj1 !== obj2)) return false;
 	const equal = {};
 	for(const key in obj1) if(!((typeof obj1[key] === "object" ? objectsEqual(obj1[key], obj2[key]) : (typeof obj1[key] === "number" && Number.isNaN(obj1[key]) && Number.isNaN(obj2[key]) || obj1[key] === obj2[key])) && (equal[key] = true))) return false;
