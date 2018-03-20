@@ -4,6 +4,8 @@ This is a collection of code snippets written by me. They can be useful in some 
 
 I can not guarantee that these pieces of code are 100% stable/optimized or that they work at all, suggestions are welcome (through pull requests).
 
+Also it's worth noting that there is no input (arguments) validation. So doing something like passing a number to a function where it expects an object will most likely result in an error, but may also just give unexpected/inadequate results.
+
 ## License notice
 
 ```

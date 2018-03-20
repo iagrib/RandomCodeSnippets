@@ -20,19 +20,22 @@
 
 */
 
+const callbacks = Symbol("Property change callbacks");
+const values = Symbol("Property values");
+
 function propChangeCallback(obj, prop, fn) {
-	obj["_CC-changeCallbacks"] = obj["_CC-changeCallbacks"] || {};
-	obj["_CC-values"] = obj["_CC-values"] || {};
-	if(!obj["_CC-changeCallbacks"][prop]) {
-		obj["_CC-changeCallbacks"][prop] = [];
-		obj["_CC-values"][prop] = obj[prop];
+	obj[callbacks] = obj[callbacks] || {};
+	obj[values] = obj[values] || {};
+	if(!obj[callbacks][prop]) {
+		obj[callbacks][prop] = [];
+		obj[values][prop] = obj[prop];
 		Object.defineProperty(obj, prop, {
-			get: () => obj["_CC-values"][prop],
+			get: () => obj[values][prop],
 			set: v => {
-				for(const cb of obj["_CC-changeCallbacks"][prop]) cb(obj["_CC-values"][prop], v);
-				obj["_CC-values"][prop] = v;
+				for(const cb of obj[callbacks][prop]) cb(obj[values][prop], v);
+				obj[values][prop] = v;
 			}
 		});
 	}
-	obj["_CC-changeCallbacks"][prop].push(fn);
+	obj[callbacks][prop].push(fn);
 }
