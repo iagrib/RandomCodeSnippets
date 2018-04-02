@@ -4,7 +4,7 @@
 
 	classes
 
-	Simple class constructor.
+	Basic implementation of classes in Lua.
 	Accepts a table of class methods
 	(can be invoked on class instances)
 	as the first argument, static
@@ -13,15 +13,13 @@
 	and the constructor function
 	(will be called each time a class
 	instance is created) as the third
-	argument. Returns a table that can
-	be called (like a function) to create
+	argument. Returns the class, it can
+	be called like a function to create
 	a new intance of the class, or indexed
 	to access static methods. Also will
 	have an '.instance(tab)' method to check
-	if given table is an instance of this
+	if 'tab' is an instance of this
 	class.
-
-	Example usage: https://repl.it/@Ia_grib/ClassesLuaExample
 
 ]]
 
