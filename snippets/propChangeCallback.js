@@ -24,8 +24,10 @@ const callbacks = Symbol("Property change callbacks");
 const values = Symbol("Property values");
 
 function propChangeCallback(obj, prop, fn) {
-	obj[callbacks] = obj[callbacks] || {};
-	obj[values] = obj[values] || {};
+	if(!obj[callbacks]) {
+		Object.defineProperty(obj, callbacks, {value: {}});
+		Object.defineProperty(obj, values, {value: {}});
+	}
 	if(!obj[callbacks][prop]) {
 		obj[callbacks][prop] = [];
 		obj[values][prop] = obj[prop];
